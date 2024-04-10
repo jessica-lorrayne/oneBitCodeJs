@@ -1,9 +1,10 @@
 
-let entrar = confirm("você quer entrar no programa ? ", sim, nao)
+let mennu = ""
+
 let nome, numero, id, infoComplete;
 
 do{
-    let mennu = prompt("Escolha alguma função de nosso menu:\n a) Digitar seu nome \n b) Digitar um número \n c) id \n d) Info \n e) Encerrar");
+    mennu = prompt("Escolha alguma função de nosso menu:\n a) Digitar seu nome \n b) Digitar um número \n c) id \n d) Info \n e) Encerrar");
 switch(mennu){
 
     case "a":
@@ -37,4 +38,4 @@ switch(mennu){
 
 }
 
-}while(entrar == true)
+}while(mennu !== "e")
