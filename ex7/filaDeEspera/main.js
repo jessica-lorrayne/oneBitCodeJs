@@ -10,29 +10,32 @@
 //ao clicar em sair o programa encerrar caso contrario volta para o menu
 let menu =""
 let nome, idade, motivoDaConsulta;
-
+const fila = []
 alert("bem-vindo");
 
-let listName = ["paulo", "alex", "pedro", "joao", "mendes"];
 
-let showList = alert(listName + "\nesses são os pacientes em espera.");
 
 do {
+ 
+  let listName = ""
+
+  for(let i = 0; i < fila.length; i++){
+    listName += (i+1) + "º" + fila[i] + "\n"
+  }
+
+alert(listName + "\nesses são os pacientes em espera.");
   menu = prompt(
-    "escolha a de acordo com sua nescessidade \nnovo paciente - a\n consultar paciente - b\nsair"
+    "escolha a de acordo com sua nescessidade \nnovo paciente - a\n consultar paciente - b\nsair - c"
   );
 
   switch (menu) {
     case "a":
       nome = prompt("insira seu nome");
-      idade = prompt("insira sua idade");
-      motivoDaConsulta = prompt("insira o motivo da consulta");
-
-      listName.push(nome);
+      fila.push(nome);
 
       break;
     case "b":
-      let PacienteAtendido = listName.shift();
+      let PacienteAtendido = fila.shift();
       alert(
         "o paciente " +
           PacienteAtendido +
