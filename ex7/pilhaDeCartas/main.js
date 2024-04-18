@@ -4,7 +4,7 @@ const cartas = ["rei de paus", "valete de copas","as de pingueiro"]
 alert("pilha de cartas")
 do {
     
-    alert("as seguintes cartas estão na pilha\n" + cartas )
+    alert("as seguintes cartas estão na pilha\n" + cartas.length )
 
     menu = prompt("escolha uma interação" + "\na) adicionar uma carta" + "\nb) puxar uma carta" + "\nc) sair")
     
@@ -15,7 +15,7 @@ switch(menu){
         cartas.push(nomeDaCarta)
         break
     case "b":
-        let removeACarta = cartas.shift()
+        let removeACarta = cartas.pop()
         alert("a carta puxada foi - "+ + removeACarta)
         break
     case "c":
