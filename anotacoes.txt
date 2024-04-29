@@ -1,0 +1,1 @@
+fazer um estudo mais aprofundado e praticar a high order function !reduce!
