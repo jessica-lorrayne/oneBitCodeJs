@@ -24,15 +24,16 @@
 
 const candidatos = [];
 const vagas = [];
-
+let menu = ""
 do {
-  const menu = prompt(
+   menu = prompt(
     "1. Listar vagas disponíveis \n 2. Criar um nova vaga \n3. Visualizar uma vaga" +
       "\n4. Inscrever um candidato em uma vaga \n5. Excluir uma vaga 6. Sair"
   );
 
   switch (menu) {
     case "1":
+      listarVagas()
       break;
     case "2":
       criarVaga();
@@ -55,6 +56,14 @@ do {
       alert("opção inválida");
   }
 } while (menu !== "6");
+
+function listarVagas(){
+
+  if(vagas.length > 0){
+  vagas.forEach(function(vaga){
+    alert("siga a lista das vagas a seguir\n" + vaga.nomeDaVaga + "\neste é o numero de candidatos: " + candidatos.length)
+  })} else{ alert("ainda não tem vagas cadastradas")}
+}
 
 function criarVaga() {
 
@@ -95,6 +104,22 @@ function criarVaga() {
   }
 }
 
+function vizualizarUmaVaga(){
+const indice = prompt("insira o indice da vaga")
+if(indice >= 0 && indice < vagas.length){
+  const vaga = vagas[indice]
+  const candidatosInscritos = vaga.candidatos.map(candidato => candidatos.nome)
+
+  alert("Nome da vaga: " + vaga.nomeDaVaga + "\n" +
+  "Descrição da vaga: " + vaga.desc + "\n" +
+  "Data limite: " + vaga.dataLimiteFormatada + "\n" +
+  "Quantidade de candidatos: " + vaga.candidatos.length + "\n" +
+  "Candidatos inscritos: " + (candidatosInscritos || "Nenhum"))
+} else {
+  alert("índice inválido")
+}
+}
+
 function inscreverCandidato() {
   const nome = prompt("insira seu nome:");
   const id = Math.floor(Math.random() * 200) + 1;
@@ -108,7 +133,22 @@ function inscreverCandidato() {
     });
   }
 }
-
-function removerVaga(){
-  
+function removerVaga() {
+  const indice = prompt("Insira o índice da vaga que deseja excluir:");
+  if (indice >= 0 && indice < vagas.length) {
+    const vaga = vagas[indice];
+    const confirmarExclusao = confirm(
+      "Você está prestes a excluir a vaga:\n" +
+      "Nome da vaga: " + vaga.nomeDaVaga + "\n" +
+      "Descrição da vaga: " + vaga.desc + "\n" +
+      "Data limite: " + vaga.dataLimiteFormatada + "\n" +
+      "Deseja continuar?"
+    );
+    if (confirmarExclusao) {
+      vagas.splice(indice, 1);
+      alert("Vaga excluída com sucesso.");
+    }
+  } else {
+    alert("Índice de vaga inválido.");
+  }
 }
